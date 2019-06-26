@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors</title>
+</head>
+<body>
+	<script type = "text/javascript">
+		let options = ["rock", "paper", "scissors"]
+		let Computer_score = 0
+		let Player_score = 0
+
+		function computerPlay() {
+			let index = Math.floor(Math.random() * 3)//randomWithRange(int 0, int 2);
+			return options[index]
+		}
+
+		function playRound(playerSelection, computerSelection) {
+			computerSelection = computerPlay()
+			playerSelection = prompt("Rock/Paper/Scissors?").toLowerCase()
+
+			console.log("Computer chose - " + computerSelection)
+			console.log("You chose - " + playerSelection)
+
+			if (computerSelection == playerSelection) {return "Tie"}
+				else if (computerSelection == "rock" && playerSelection == "paper") { Player_score++;
+					return "You Win! Paper beats Rock"}
+				else if (computerSelection == "rock" && playerSelection == "scissors") {Computer_score++;
+					return "You Lose! Rock beats Scissors"}
+				else if (computerSelection == "paper" && playerSelection == "scissors") {Player_score++;
+					return "You Win! Scissors beat Paper"}
+				else if (computerSelection == "paper" && playerSelection == "rock") { Computer_score++;
+					return "You Lose! Paper beats Rock"}
+				else if (computerSelection == "scissors" && playerSelection == "paper") {Player_score++;
+					return "You Win! Scissors beat Paper"}
+				else if (computerSelection == "paper" && playerSelection == "rock") { Computer_score++;
+					return "You Lose! Paper beats Rock"}
+		}
+
+		function game() {
+			for (let i = 0; i < 5; i++) {
+				playRound()
+				console.log("Player score - " + Player_score)
+				console.log("Computer score - " + Computer_score)
+			}
+			if (Player_score > Computer_score) {
+				alert("Congratz, you win!")
+			} else {
+				alert("Oops, you lose!")
+			}
+			Player_score, Computer_score = 0, 0
+		}
+	</script>
+</body>
+</html>
