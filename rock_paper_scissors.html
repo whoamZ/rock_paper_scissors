@@ -15,17 +15,15 @@
 
 	<div class = "round">
 		<h3> Round: 
-			<div class = "value">0</div>
+			<div id = "roundNo">0</div>
 		</h3>
 	</div>
+	
+	<div class = "message"><div id = "result"> </div></div>
 
 	<div class="score">
 		<h2 id = "your"> Your score: <div id = "your_value">0</div></h2>
 		<h2 id = "comp"> Opponent's score: <div id = "opp_value">0</div></h2>
-	</div>
-
-	<div>
-		<h2 id="result"> </h2>
 	</div>
 
 	<script type = "text/javascript">
@@ -34,59 +32,65 @@
 		let Player_score = 0;
 
 		function computerPlay() {
-			let index = Math.floor(Math.random() * 3)//randomWithRange(int 0, int 2);
-			return options[index]
+			let index = Math.floor(Math.random() * 3);//randomWithRange(int 0, int 2);
+			return options[index];
 		}
 
 		function playRound(playerSelection, computerSelection) {
-			computerSelection = computerPlay();
-			playerSelection = clicks(choose);
+			//computerSelection = computerPlay();
+			//playerSelection = clicks(choose);
 			//alert(playerSelection) //prompt("Rock/Paper/Scissors?").toLowerCase()
 
 			console.log("Computer chose - " + computerSelection);
 			console.log("You chose - " + playerSelection);
 
-			if (computerSelection == playerSelection) {return "Tie"}
-				else if (computerSelection == "rock" && playerSelection == "paper") { Player_score++;
-					document.getElementById("result") = "You Win! Paper beats Rock"}
+			if (computerSelection == playerSelection) {
+				document.getElementById("result").innerHTML = "Tie"}
+				else if (computerSelection == "rock" && playerSelection == "paper") {Player_score++;
+					document.getElementById("result").innerHTML = "You Win! Paper beats Rock"} //document.getElementById("result") = "You Win! Paper beats Rock"}
 				else if (computerSelection == "rock" && playerSelection == "scissors") {Computer_score++;
-					document.getElementById("result") = "You Lose! Rock beats Scissors"}
+					document.getElementById("result").innerHTML = "You Lose! Rock beats Scissors"}
 				else if (computerSelection == "paper" && playerSelection == "scissors") {Player_score++;
-					document.getElementById("result") = "You Win! Scissors beat Paper"}
-				else if (computerSelection == "paper" && playerSelection == "rock") { Computer_score++;
-					document.getElementById("result") = "You Lose! Paper beats Rock"}
+					document.getElementById("result").innerHTML = "You Win! Scissors beat Paper"}
+				else if (computerSelection == "paper" && playerSelection == "rock") {Computer_score++;
+					document.getElementById("result").innerHTML = "You Lose! Paper beats Rock"}
 				else if (computerSelection == "scissors" && playerSelection == "paper") {Player_score++;
-					document.getElementById("result") = "You Win! Scissors beat Paper"}
-				else if (computerSelection == "paper" && playerSelection == "rock") { Computer_score++;
-					document.getElementById("result") = "You Lose! Paper beats Rock"}
-			document.getElementById("your_value") = Player_score;
-			document.getElementById("opp_value") = Computer_score;
+					document.getElementById("result").innerHTML = "You Win! Paper beats Rock"} //document.getElementById("result") = "You Win! Scissors beat Paper"}
+				else if (computerSelection == "paper" && playerSelection == "rock") {Computer_score++;
+					document.getElementById("result").innerHTML = "You Lose! Paper beats Rock"}
+			document.getElementById("your_value").innerHTML = Player_score;
+			document.getElementById("opp_value").innerHTML = Computer_score;
 		}
 
-		function game() {
-			for (let i = 0; i < 5; i++) {
-				playRound();
-				console.log("Player score - " + Player_score);
-				console.log("Computer score - " + Computer_score);
-			}
-			if (Player_score > Computer_score) {
-				document.getElementById("result") = "Congratz, you win!";
-			} else {
-				document.getElementById("result") = "Oops, you lose!";
-			}
-			Player_score, Computer_score = 0, 0
-		}
+		let i = 0;
+		function game(chosen) {
+			playRound(chosen, computerPlay());
+			console.log("Player score - " + Player_score);
+			console.log("Computer score - " + Computer_score);
+			document.getElementById("roundNo").innerHTML = ++i;
 
-		function clicks() {
-			let rck = document.getElementById("rock");
-			let ppr = document.getElementById("paper");
-			let sci = document.getElementById("scissors");
-			rck.addEventListener('click', function() {playerSelection = "rock";});
-			ppr.addEventListener('click', function() {playerSelection = "paper";});
-			sci.addEventListener("click", function() {playerSelection = "scissors";});
-		}
+			if (i == 5) {
+				if (Player_score > Computer_score) {
+					alert("Congratz, you win!");
+					} else {
+					alert("Oops, you lose!");
+					}
+				location.reload()
+				// document.getElementById("your_value").reset();
+				// document.getElementById("opp_value").reset();
+				// document.getElementById("round").reset();
+				}
+			}
+			
+
+		let rck = document.getElementById("rock");
+		let ppr = document.getElementById("paper");
+		let sci = document.getElementById("scissors");
+		rck.addEventListener('click', function() {game("rock")});
+		ppr.addEventListener('click', function() {game("paper")});
+		sci.addEventListener("click", function() {game("scissors")});
 		
-		document.onload = game()
+		//document.onload = game()
 	</script>
 </body>
 </html>

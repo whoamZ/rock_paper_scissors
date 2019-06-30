@@ -1,5 +1,6 @@
 body {
 	text-align: center;
+	font-family: Arial;
 }
 
 #rock, #paper, #scissors {
@@ -12,6 +13,10 @@ body {
 .options {
 	display: grid;
 	grid-template: 150px / auto auto auto;
+}
+
+img:hover {
+	background-color: #E5E4E4;
 }
 
 .round {
