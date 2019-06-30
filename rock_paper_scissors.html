@@ -2,8 +2,32 @@
 <html>
 <head>
 	<title>Rock Paper Scissors</title>
+	<link href = style.css type = "text/css" rel = "stylesheet">
 </head>
 <body>
+	<h1>Let's play Rock Paper Scissors!</h1>
+
+	<div class = "options">
+		<img src = rock.png id = "rock">
+		<img src = "paper.png" id = "paper">
+		<img src= "scissors.png" id = "scissors">
+	</div>
+
+	<div class = "round">
+		<h3> Round: 
+			<div class = "value">0</div>
+		</h3>
+	</div>
+
+	<div class="score">
+		<h2 id = "your"> Your score: <div id = "your_value">0</div></h2>
+		<h2 id = "comp"> Opponent's score: <div id = "opp_value">0</div></h2>
+	</div>
+
+	<div class="result">
+		<h2> </h2>
+	</div>
+
 	<script type = "text/javascript">
 		let options = ["rock", "paper", "scissors"]
 		let Computer_score = 0
@@ -15,11 +39,12 @@
 		}
 
 		function playRound(playerSelection, computerSelection) {
-			computerSelection = computerPlay()
-			playerSelection = prompt("Rock/Paper/Scissors?").toLowerCase()
+			computerSelection = computerPlay();
+			playerSelection = clicks(choose);
+			//alert(playerSelection) //prompt("Rock/Paper/Scissors?").toLowerCase()
 
-			console.log("Computer chose - " + computerSelection)
-			console.log("You chose - " + playerSelection)
+			console.log("Computer chose - " + computerSelection);
+			console.log("You chose - " + playerSelection);
 
 			if (computerSelection == playerSelection) {return "Tie"}
 				else if (computerSelection == "rock" && playerSelection == "paper") { Player_score++;
@@ -34,6 +59,8 @@
 					return "You Win! Scissors beat Paper"}
 				else if (computerSelection == "paper" && playerSelection == "rock") { Computer_score++;
 					return "You Lose! Paper beats Rock"}
+			document.getElementById("your_value") = Player_score;
+			document.getElementById("opp_value") = Computer_score;
 		}
 
 		function game() {
@@ -49,6 +76,16 @@
 			}
 			Player_score, Computer_score = 0, 0
 		}
+
+		function clicks(choose) {
+			let rck = document.getElementById("rock");
+			let ppr = document.getElementById("paper");
+			let sci = document.getElementById("scissors");
+			rck.addEventListener('click', function() {playerSelection = "rock"});
+			ppr.addEventListener('click', function() {playerSelection = "paper"});
+			sci.addEventListener("click", function() {playerSelection = "scissors"});
+		}
+		
 	</script>
 </body>
 </html>

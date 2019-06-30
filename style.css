@@ -1,0 +1,25 @@
+body {
+	text-align: center;
+}
+
+#rock, #paper, #scissors {
+	align-content: center;
+	width: 150px;
+	height: 150px;
+	margin: 50px auto;
+}
+
+.options {
+	display: grid;
+	grid-template: 150px / auto auto auto;
+}
+
+.round {
+	margin-top: 150px;
+}
+
+.score {
+	display: grid;
+	grid-template: 150px/ auto auto;
+	align-items: center;
+}
