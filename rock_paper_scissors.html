@@ -24,8 +24,8 @@
 		<h2 id = "comp"> Opponent's score: <div id = "opp_value">0</div></h2>
 	</div>
 
-	<div class="result">
-		<h2> </h2>
+	<div>
+		<h2 id="result"> </h2>
 	</div>
 
 	<script type = "text/javascript">
@@ -48,17 +48,17 @@
 
 			if (computerSelection == playerSelection) {return "Tie"}
 				else if (computerSelection == "rock" && playerSelection == "paper") { Player_score++;
-					return "You Win! Paper beats Rock"}
+					document.getElementById("result") = "You Win! Paper beats Rock"}
 				else if (computerSelection == "rock" && playerSelection == "scissors") {Computer_score++;
-					return "You Lose! Rock beats Scissors"}
+					document.getElementById("result") = "You Lose! Rock beats Scissors"}
 				else if (computerSelection == "paper" && playerSelection == "scissors") {Player_score++;
-					return "You Win! Scissors beat Paper"}
+					document.getElementById("result") = "You Win! Scissors beat Paper"}
 				else if (computerSelection == "paper" && playerSelection == "rock") { Computer_score++;
-					return "You Lose! Paper beats Rock"}
+					document.getElementById("result") = "You Lose! Paper beats Rock"}
 				else if (computerSelection == "scissors" && playerSelection == "paper") {Player_score++;
-					return "You Win! Scissors beat Paper"}
+					document.getElementById("result") = "You Win! Scissors beat Paper"}
 				else if (computerSelection == "paper" && playerSelection == "rock") { Computer_score++;
-					return "You Lose! Paper beats Rock"}
+					document.getElementById("result") = "You Lose! Paper beats Rock"}
 			document.getElementById("your_value") = Player_score;
 			document.getElementById("opp_value") = Computer_score;
 		}
