@@ -29,9 +29,9 @@
 	</div>
 
 	<script type = "text/javascript">
-		let options = ["rock", "paper", "scissors"]
-		let Computer_score = 0
-		let Player_score = 0
+		let options = ["rock", "paper", "scissors"];
+		let Computer_score = 0;
+		let Player_score = 0;
 
 		function computerPlay() {
 			let index = Math.floor(Math.random() * 3)//randomWithRange(int 0, int 2);
@@ -65,27 +65,28 @@
 
 		function game() {
 			for (let i = 0; i < 5; i++) {
-				playRound()
-				console.log("Player score - " + Player_score)
-				console.log("Computer score - " + Computer_score)
+				playRound();
+				console.log("Player score - " + Player_score);
+				console.log("Computer score - " + Computer_score);
 			}
 			if (Player_score > Computer_score) {
-				alert("Congratz, you win!")
+				document.getElementById("result") = "Congratz, you win!";
 			} else {
-				alert("Oops, you lose!")
+				document.getElementById("result") = "Oops, you lose!";
 			}
 			Player_score, Computer_score = 0, 0
 		}
 
-		function clicks(choose) {
+		function clicks() {
 			let rck = document.getElementById("rock");
 			let ppr = document.getElementById("paper");
 			let sci = document.getElementById("scissors");
-			rck.addEventListener('click', function() {playerSelection = "rock"});
-			ppr.addEventListener('click', function() {playerSelection = "paper"});
-			sci.addEventListener("click", function() {playerSelection = "scissors"});
+			rck.addEventListener('click', function() {playerSelection = "rock";});
+			ppr.addEventListener('click', function() {playerSelection = "paper";});
+			sci.addEventListener("click", function() {playerSelection = "scissors";});
 		}
 		
+		document.onload = game()
 	</script>
 </body>
 </html>
