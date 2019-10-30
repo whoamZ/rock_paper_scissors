@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Rock Paper Scissors</title>
+	<!-- Same like in the google clone comment, shouldn't have any space around '=' -->
 	<link href = style.css type = "text/css" rel = "stylesheet">
 </head>
 <body>
@@ -22,10 +23,12 @@
 	<div class = "message"><div id = "result"> </div></div>
 
 	<div class="score">
+		<!-- Inconsistent naming style, di round pake camel case di sini pake snake case -->
 		<h2 id = "your"> Your score: <div id = "your_value">0</div></h2>
 		<h2 id = "comp"> Opponent's score: <div id = "opp_value">0</div></h2>
 	</div>
 
+	<!-- Personally I prefer kalo javascript nya dipisah ke file .js terus dipanggil di sini (<script src=''></script>) gitu2 -->
 	<script type = "text/javascript">
 		let options = ["rock", "paper", "scissors"];
 		let Computer_score = 0;
@@ -45,19 +48,25 @@
 			console.log("You chose - " + playerSelection);
 
 			if (computerSelection == playerSelection) {
+				// Closing braces should be on separate line
 				document.getElementById("result").innerHTML = "Tie"}
+				// else if indentation harusnya sesuai sama if nya
+				// Player score ++; nya harusnya di new line, jangan ditumpuk ke kanan gini
 				else if (computerSelection == "rock" && playerSelection == "paper") {Player_score++;
+					// Closing braces
 					document.getElementById("result").innerHTML = "You Win! Paper beats Rock"} //document.getElementById("result") = "You Win! Paper beats Rock"}
 				else if (computerSelection == "rock" && playerSelection == "scissors") {Computer_score++;
 					document.getElementById("result").innerHTML = "You Lose! Rock beats Scissors"}
 				else if (computerSelection == "paper" && playerSelection == "scissors") {Player_score++;
 					document.getElementById("result").innerHTML = "You Win! Scissors beat Paper"}
 				else if (computerSelection == "paper" && playerSelection == "rock") {Computer_score++;
+					// Hayo text nya salah belom kelar ya
 					document.getElementById("result").innerHTML = "You Lose! Paper beats Rock"}
 				else if (computerSelection == "scissors" && playerSelection == "paper") {Player_score++;
 					document.getElementById("result").innerHTML = "You Win! Paper beats Rock"} //document.getElementById("result") = "You Win! Scissors beat Paper"}
 				else if (computerSelection == "paper" && playerSelection == "rock") {Computer_score++;
 					document.getElementById("result").innerHTML = "You Lose! Paper beats Rock"}
+			// Actually semua yang di atas ini daripada di hardcode mending pake function, like you lose you winnya satu function, a beats b nya another function
 			document.getElementById("your_value").innerHTML = Player_score;
 			document.getElementById("opp_value").innerHTML = Computer_score;
 		}
@@ -69,6 +78,7 @@
 			console.log("Computer score - " + Computer_score);
 			document.getElementById("roundNo").innerHTML = ++i;
 
+			// Karena ini javascript, equalitynya should be === bukan ==, kadang bisa terjadi aneh2 kalo javascript pake ==
 			if (i == 5) {
 				if (Player_score > Computer_score) {
 					alert("Congratz, you win!");
@@ -76,6 +86,7 @@
 					alert("Oops, you lose!");
 					}
 				location.reload()
+				// Ini kalau udah ga dipake di delete dong jangan di comment out
 				// document.getElementById("your_value").reset();
 				// document.getElementById("opp_value").reset();
 				// document.getElementById("round").reset();
@@ -86,6 +97,7 @@
 		let rck = document.getElementById("rock");
 		let ppr = document.getElementById("paper");
 		let sci = document.getElementById("scissors");
+		// Perlu titik koma setelah game(...), buat styling aja
 		rck.addEventListener('click', function() {game("rock")});
 		ppr.addEventListener('click', function() {game("paper")});
 		sci.addEventListener("click", function() {game("scissors")});
